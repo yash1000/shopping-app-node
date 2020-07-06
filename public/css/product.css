@@ -1,0 +1,30 @@
+.form-control label,
+.form-control textarea,
+.form-control input{
+    display: block;
+    width: 100%;
+}
+.form-control input,
+.form-control textarea{
+    border: 1px solid #dbc441;
+    font: inherit;
+    border-radius: 2px;
+}
+.product-form{
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+}
+button{
+    font: inherit;
+    border: 1px solid blue;
+    background: white;
+    color: blue;
+    cursor: pointer;
+    border-radius: 3px;
+}
+button:hover,
+button:active{
+    background-color: blue;
+    color: white;
+}
