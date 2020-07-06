@@ -66,6 +66,7 @@ exports.postcart = (req,res,next) => {
     const prodid = req.body.productid;
     Product.findbyid(prodid,(product)=> {
         Cart.addproduct(prodid,product.price);
+        res.redirect('/cart');
     })
 }
 exports.getcheckout = (req,res,next) => {

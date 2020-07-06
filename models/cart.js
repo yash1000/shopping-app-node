@@ -54,7 +54,7 @@ module.exports = class Cart {
         fs.readFile(p,(err,filecontent) => {
             const cart = JSON.parse(filecontent);
             if(err){
-                cd(null);
+                cb(null);
             } else {
                 cb(cart);
             }
