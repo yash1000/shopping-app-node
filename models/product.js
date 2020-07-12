@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const pathdir = require('../util/path');
 const p = path.join(pathdir, 'data', 'products.json');
+
 const Cart = require('../models/cart');  
+const db = require('../util/database');
+
 const getproductfromfile = (cb) => {
     fs.readFile(p, (err, filecontent) => {
         if (err) {
@@ -11,6 +14,7 @@ const getproductfromfile = (cb) => {
         cb(JSON.parse(filecontent));
     })
 };
+
 module.exports = class Product {
     constructor(id,t,imageUrl,description,price) {
         this.id = id;
@@ -21,6 +25,7 @@ module.exports = class Product {
     }
 
     save() {  
+
         getproductfromfile(products => {
             if(this.id){
                 const existingproductindx = products.findIndex(p => p.id === this.id);
@@ -37,19 +42,27 @@ module.exports = class Product {
             });
         }
         });
+
     }
     static fatch(cb) {
+    // static fatch() {
+
         getproductfromfile(cb);
+
     }
 
     static findbyid(id, cb) {
+    // static findbyid(id) {
+
         getproductfromfile(products => {
             const filterproduct = products.find(p => p.id === id);
             cb(filterproduct);
         })
+
     }
 
     static deletebyid(id) {
+
         getproductfromfile(products => {
             const product = products.find(p => p.id === id);
             const updatedproduct = products.filter(p => p.id !== id);
@@ -60,5 +73,6 @@ module.exports = class Product {
                 }
             });
         })
+
     }
 }
